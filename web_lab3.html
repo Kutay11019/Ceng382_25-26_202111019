@@ -127,39 +127,42 @@
     <script>
         const loginAttempts = [];
 
-        const loginForm = document.getElementById("loginForm");
+const loginForm = document.getElementById("loginForm");
 
-        loginForm.addEventListener("submit", function(event) {
-            event.preventDefault();
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-            loginAttempts.push({ username, password });
+    loginAttempts.push({ username, password });
 
-            console.log("Tüm Girişler:", loginAttempts);
+    console.log("All attempts:", loginAttempts);
 
-            loginForm.reset();
-        });
+    if (username === "admin" && password === "admin") {
+        window.location.href = "table.html"; //chatgpt ile diğer dosyaya gidiş yolunu ayarladım
+    }
 
-        function updateClock() {
-            const clockElement = document.getElementById("clock");
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
+    loginForm.reset();
+});
 
-            clockElement.textContent = timeString;
-        }
+function updateClock() {
+    const clockElement = document.getElementById("clock");
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
 
-        setInterval(updateClock, 1000);
+    clockElement.textContent = timeString;
+}
 
-        updateClock();
+setInterval(updateClock, 1000);
+updateClock();
 
-        document.addEventListener("keydown", function(event) {
-            if (event.key.toLowerCase() === "h") {
-                const container = document.querySelector(".container");
-                container.style.display = (container.style.display === "none") ? "block" : "none";
-            }
-        });
+document.addEventListener("keydown", function(event) {
+    if (event.key.toLowerCase() === "h") {
+        const container = document.querySelector(".container");
+        container.style.display = (container.style.display === "none") ? "block" : "none";
+    }
+});
     </script>
 
 </body>
