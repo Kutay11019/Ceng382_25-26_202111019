@@ -6,9 +6,21 @@
 
 <div class="container mt-4">
     <div class="row">
-        <!-- Sol tarafta Form -->
+        <!-- Sol tarafta Filtreleme Formu -->
         <div class="col-md-4">
-            <h3>Add / Edit Class</h3>
+            <h3>Filter Classes</h3>
+            <form method="get">
+                <div class="mb-3">
+                    <label class="form-label">Class Name</label>
+                    <input type="text" class="form-control" name="FilterText" value="@Model.FilterText" />
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <!-- Sağ tarafta Sınıf Ekleme ve Düzenleme Formu -->
+        <div class="col-md-4">
+            <h3>@(Model.NewClass.Id == 0 ? "Add New Class" : "Edit Class")</h3>
             <form method="post">
                 <input type="hidden" asp-for="NewClass.Id" />
 
@@ -32,13 +44,12 @@
             </form>
         </div>
 
-        <!-- Sağ tarafta Tablo -->
+        <!-- Sağ tarafta Tablo ve Sayfalama -->
         <div class="col-md-8">
             <h3>Class List</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Class Name</th>
                         <th>Student Count</th>
                         <th>Description</th>
@@ -46,14 +57,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in IndexModel.ClassList)
+                    @foreach (var item in Model.DisplayedClasses)
                     {
                         <tr>
-                            <td>@item.Id</td>
                             <td>@item.ClassName</td>
                             <td>@item.StudentCount</td>
                             <td>@item.Description</td>
                             <td>
+                                <!-- Edit ve Delete Butonları -->
                                 <a asp-page="./Index" asp-route-id="@item.Id" asp-page-handler="Edit" class="btn btn-warning btn-sm">Edit</a>
                                 <form method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="@item.Id" />
@@ -64,6 +75,18 @@
                     }
                 </tbody>
             </table>
+
+            <!-- Sayfalama -->
+            <nav>
+                <ul class="pagination">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @((i == Model.PageNumber) ? "active" : "")">
+                            <a class="page-link" asp-page="./Index" asp-route-pageNumber="@i">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
