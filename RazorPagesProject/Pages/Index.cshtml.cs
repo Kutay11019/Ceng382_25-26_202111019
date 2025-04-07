@@ -87,7 +87,7 @@ namespace RazorPagesProject.Pages
                 ClassList.Remove(classToRemove);
             }
 
-            return RedirectToPage();
+            return RedirectToPage(); 
         }
 
         // Düzenleme için formu doldurma
