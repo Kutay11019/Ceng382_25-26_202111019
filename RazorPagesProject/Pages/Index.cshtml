@@ -41,6 +41,12 @@
 
                 <button type="submit" class="btn btn-primary" asp-page-handler="Add">Add Class</button>
                 <button type="submit" class="btn btn-success" asp-page-handler="Edit">Save Changes</button>
+                
+                <!-- Export All Data Button -->
+                <button asp-page-handler="ExportJsonAll" class="btn btn-primary">Export All Data as JSON</button>
+                
+                <!-- Export Filtered Data Button -->
+                <button asp-page-handler="ExportJsonFiltered" class="btn btn-success">Export Filtered Data as JSON</button>
             </form>
         </div>
 
@@ -50,9 +56,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Class Name</th>
-                        <th>Student Count</th>
-                        <th>Description</th>
+                        <th class="selectable-column" onclick="toggleColumn(this, 'ClassName')">Class Name</th>
+                        <th class="selectable-column" onclick="toggleColumn(this, 'StudentCount')">Student Count</th>
+                        <th class="selectable-column" onclick="toggleColumn(this, 'Description')">Description</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -90,3 +96,22 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        const selectedColumns = new Set();
+
+        function toggleColumn(th, columnName) {
+            if (selectedColumns.has(columnName)) {
+                selectedColumns.delete(columnName);
+                th.style.backgroundColor = ''; // eski haline döndür
+            } else {
+                selectedColumns.add(columnName);
+                th.style.backgroundColor = '#d1e7dd'; // yeşilimsi renk
+            }
+
+            // Hidden input'u güncelle
+            document.getElementById('selectedColumns').value = Array.from(selectedColumns).join(',');
+        }
+    </script>
+}

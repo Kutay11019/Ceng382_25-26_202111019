@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesProject.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace RazorPagesProject.Pages
 {
@@ -112,6 +115,24 @@ namespace RazorPagesProject.Pages
             }
 
             return RedirectToPage();
+        }
+
+        public IActionResult OnPostExportJsonAll()
+        {
+    // Tüm veriyi JSON olarak dışa aktarır
+            var json = Utils.Instance.ExportToJson(ClassList);
+            return File(Encoding.UTF8.GetBytes(json), "application/json", "all_data.json");
+        }
+
+         public IActionResult OnPostExportJsonFiltered()
+        {
+            var selectedColumnsRaw = Request.Form["selectedColumns"];
+            List<string> selectedColumns = selectedColumnsRaw.ToString().Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            var filteredList = string.IsNullOrWhiteSpace(FilterText) ? ClassList : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            string json = Utils.Instance.ExportToJson(filteredList, selectedColumns);
+            return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_data.json");
         }
     }
 }
