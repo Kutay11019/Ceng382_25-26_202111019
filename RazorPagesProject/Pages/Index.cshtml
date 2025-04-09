@@ -39,14 +39,17 @@
                     <textarea class="form-control" asp-for="NewClass.Description"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary" asp-page-handler="Add">Add Class</button>
-                <button type="submit" class="btn btn-success" asp-page-handler="Edit">Save Changes</button>
+                <button type="submit" class="btn btn-primary mb-2" asp-page-handler="Add">Add Class</button>
+                <button type="submit" class="btn btn-success mb-2" asp-page-handler="Edit">Save Changes</button>
                 
                 <!-- Export All Data Button -->
                 <button asp-page-handler="ExportJsonAll" class="btn btn-primary">Export All Data as JSON</button>
                 
                 <!-- Export Filtered Data Button -->
                 <button asp-page-handler="ExportJsonFiltered" class="btn btn-success">Export Filtered Data as JSON</button>
+
+                <input type="hidden" id="selectedColumns" name="selectedColumns" />
+
             </form>
         </div>
 
