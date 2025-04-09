@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gaming\\Desktop\\CENG382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj": {}
+    "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gaming\\Desktop\\CENG382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj": {
+    "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gaming\\Desktop\\CENG382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj",
+        "projectUniqueName": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj",
         "projectName": "RazorPagesProject",
-        "projectPath": "C:\\Users\\Gaming\\Desktop\\CENG382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj",
+        "projectPath": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\RazorPagesProject.csproj",
         "packagesPath": "C:\\Users\\Gaming\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gaming\\Desktop\\CENG382\\Ceng382_25-26_202111019\\RazorPagesProject\\obj\\",
+        "outputPath": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
