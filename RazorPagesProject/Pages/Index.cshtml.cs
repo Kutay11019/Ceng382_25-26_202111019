@@ -130,9 +130,6 @@ namespace RazorPagesProject.Pages
         return File(Encoding.UTF8.GetBytes(json), "application/json", "all_data.json");
     }
 
-    [BindProperty(SupportsGet = true)]
-    public string FilterText { get; set; }
-
     public IActionResult OnPostExportJsonFiltered()
     {
         // Filtrelenmiş tüm satırları getir (sayfalama olmadan)
