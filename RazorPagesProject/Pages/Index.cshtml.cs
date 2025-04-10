@@ -34,12 +34,6 @@ namespace RazorPagesProject.Pages
 
     public void OnGet()
     {
-
-        // Eğer NewClass modelindeki veri kaybolmuşsa, yeni bir boş model oluşturulur
-        if (NewClass == null)
-        {
-            NewClass = new ClassInformationModel();
-        }
         // Sahte veri ekleniyor
         if (!ClassList.Any()) // Eğer sınıf listesi boşsa, sahte veriler eklenir
         {
@@ -88,8 +82,6 @@ namespace RazorPagesProject.Pages
             // ID otomatik artırılıyor
             NewClass.Id = ClassList.Count > 0 ? ClassList.Max(c => c.Id) + 1 : 1;
             ClassList.Add(NewClass);
-
-            ModelState.Clear();
 
             return RedirectToPage();
         }
