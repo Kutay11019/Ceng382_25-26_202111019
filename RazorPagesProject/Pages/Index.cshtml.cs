@@ -130,8 +130,23 @@ namespace RazorPagesProject.Pages
         return File(Encoding.UTF8.GetBytes(json), "application/json", "all_data.json");
     }
 
-    // Export filtered data based on selected columns
     public IActionResult OnPostExportJsonFiltered()
+    {
+        // Filtrelenmiş tüm satırları getir (sayfalama olmadan)
+        var filteredRows = string.IsNullOrWhiteSpace(FilterText)
+            ? ClassList
+            : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        // JSON'a dönüştür
+        string json = JsonSerializer.Serialize(filteredRows);
+
+        // JSON olarak döndür
+        return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_rows.json");
+    }
+
+
+    // Export selected columns
+    public IActionResult OnPostExportJsonColumns()
     {
         // Sayfa numarasını formdan alıyoruz
         int pageNumber = string.IsNullOrEmpty(Request.Form["pageNumber"]) ? 1 : int.Parse(Request.Form["pageNumber"]);
@@ -139,12 +154,10 @@ namespace RazorPagesProject.Pages
         // Formdan gelen seçili kolonları alıyoruz
         var selectedColumnsList = string.IsNullOrEmpty(SelectedColumns) ? new List<string>() : SelectedColumns.Split(',').ToList();
 
-        // Filtrelenmiş veriyi oluşturuyoruz
         var filteredClasses = string.IsNullOrWhiteSpace(FilterText)
             ? ClassList
             : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        // Sayfaya göre veriyi alıyoruz
         var pageClasses = filteredClasses
             .Skip((pageNumber - 1) * PageSize)
             .Take(PageSize)
