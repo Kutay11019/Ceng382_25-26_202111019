@@ -54,6 +54,7 @@
                 <!-- Export Filtered Data Button -->
                 <button type="submit" asp-page-handler="ExportJsonFiltered" class="btn btn-success mb-2">Export Filtered Data as JSON</button>
                 <input type="hidden" id="selectedColumns" name="selectedColumns" value="@Model.SelectedColumns" />
+                <input type="hidden" id="pageNumber" name="pageNumber" value="@Model.PageNumber" />
             </form>
         </div>
 

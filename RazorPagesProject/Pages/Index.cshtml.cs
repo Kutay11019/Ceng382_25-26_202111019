@@ -133,6 +133,9 @@ namespace RazorPagesProject.Pages
     // Export filtered data based on selected columns
     public IActionResult OnPostExportJsonFiltered()
     {
+        // Sayfa numarasını formdan alıyoruz
+        int pageNumber = string.IsNullOrEmpty(Request.Form["pageNumber"]) ? 1 : int.Parse(Request.Form["pageNumber"]);
+
         // Formdan gelen seçili kolonları alıyoruz
         var selectedColumnsList = string.IsNullOrEmpty(SelectedColumns) ? new List<string>() : SelectedColumns.Split(',').ToList();
 
@@ -141,9 +144,9 @@ namespace RazorPagesProject.Pages
             ? ClassList
             : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        // Şu anda hangi sayfada olduğumuzu dikkate alıyoruz
+        // Sayfaya göre veriyi alıyoruz
         var pageClasses = filteredClasses
-            .Skip((PageNumber - 1) * PageSize)
+            .Skip((pageNumber - 1) * PageSize)
             .Take(PageSize)
             .ToList();
 
