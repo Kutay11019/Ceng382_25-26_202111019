@@ -14,7 +14,7 @@ namespace RazorPagesProject.Pages
     // Filtreleme ve sayfalama için eklenen özellikler
 
     [BindProperty]
-    public ClassInformationModel NewClass { get; set; } = new ClassInformationModel()
+    public ClassInformationModel NewClass { get; set; } = new ClassInformationModel(); 
 
     public List<ClassInformationTable> DisplayedClasses { get; set; } = new List<ClassInformationTable>();
     public int TotalPages { get; set; }
