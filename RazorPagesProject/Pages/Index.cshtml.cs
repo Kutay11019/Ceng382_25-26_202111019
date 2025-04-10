@@ -71,6 +71,60 @@ namespace RazorPagesProject.Pages
             }).ToList();
     }
 
+     // Sınıf ekleme işlemi
+        [BindProperty]
+        public ClassInformationModel NewClass { get; set; } = new ClassInformationModel();
+
+        public IActionResult OnPostAdd()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            // ID otomatik artırılıyor
+            NewClass.Id = ClassList.Count > 0 ? ClassList.Max(c => c.Id) + 1 : 1;
+            ClassList.Add(NewClass);
+
+            return RedirectToPage();
+        }
+
+        // Sınıf silme işlemi
+        public IActionResult OnPostDelete(int id)
+        {
+            var classToRemove = ClassList.FirstOrDefault(c => c.Id == id);
+            if (classToRemove != null)
+            {
+                ClassList.Remove(classToRemove);
+            }
+
+            return RedirectToPage(); 
+        }
+
+        // Düzenleme için formu doldurma
+        public void OnGetEdit(int id)
+        {
+            var classToEdit = ClassList.FirstOrDefault(c => c.Id == id);
+            if (classToEdit != null)
+            {
+                NewClass = classToEdit;
+            }
+        }
+
+        // Güncellenmiş veriyi kaydetme
+        public IActionResult OnPostEdit()
+        {
+            var classToUpdate = ClassList.FirstOrDefault(c => c.Id == NewClass.Id);
+            if (classToUpdate != null)
+            {
+                classToUpdate.ClassName = NewClass.ClassName;
+                classToUpdate.StudentCount = NewClass.StudentCount;
+                classToUpdate.Description = NewClass.Description;
+            }
+
+            return RedirectToPage();
+        }
+
     // Export all data
     public IActionResult OnPostExportJsonAll()
     {
