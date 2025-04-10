@@ -136,13 +136,19 @@ namespace RazorPagesProject.Pages
         // Formdan gelen seçili kolonları alıyoruz
         var selectedColumnsList = string.IsNullOrEmpty(SelectedColumns) ? new List<string>() : SelectedColumns.Split(',').ToList();
 
-        // Filtrelenmiş listeyi oluşturuyoruz
-        var filteredList = string.IsNullOrWhiteSpace(FilterText) 
-            ? ClassList.Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList() 
-            : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).Skip((PageNumber - 1) * PageSize).Take(PageSize).ToList();
+        // Filtrelenmiş veriyi oluşturuyoruz
+        var filteredClasses = string.IsNullOrWhiteSpace(FilterText)
+            ? ClassList
+            : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        // Şu anda hangi sayfada olduğumuzu dikkate alıyoruz
+        var pageClasses = filteredClasses
+            .Skip((PageNumber - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
 
         // JSON'a dönüştürme işlemi
-        string json = Utils.Instance.ExportToJson(filteredList, selectedColumnsList);
+        string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
 
         // JSON olarak döndürme
         return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_data.json");
