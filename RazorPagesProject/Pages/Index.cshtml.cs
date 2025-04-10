@@ -130,15 +130,18 @@ namespace RazorPagesProject.Pages
         return File(Encoding.UTF8.GetBytes(json), "application/json", "all_data.json");
     }
 
+    [BindProperty(SupportsGet = true)]
+    public string FilterText { get; set; }
+
     public IActionResult OnPostExportJsonFiltered()
     {
         // Filtrelenmiş tüm satırları getir (sayfalama olmadan)
-        var filteredRows = string.IsNullOrWhiteSpace(FilterText)
-            ? ClassList
-            : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+        var filteredClasses = string.IsNullOrWhiteSpace(FilterText)
+        ? ClassList
+        : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
 
         // JSON'a dönüştür
-        string json = JsonSerializer.Serialize(filteredRows);
+        string json = JsonSerializer.Serialize(filteredClasses);
 
         // JSON olarak döndür
         return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_rows.json");
