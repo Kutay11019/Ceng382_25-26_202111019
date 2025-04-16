@@ -110,16 +110,30 @@
         const selectedColumns = new Set();
 
         function toggleColumn(th, columnName) {
+            const columnIndex = Array.from(th.parentNode.children).indexOf(th); // başlığın index'ini al
+            const rows = document.querySelectorAll("tbody tr"); // tüm satırları al
+
             if (selectedColumns.has(columnName)) {
                 selectedColumns.delete(columnName);
-                th.style.backgroundColor = ''; // eski haline döndür
+                th.style.backgroundColor = ''; // başlığı eski haline döndür
+
+                // O sütundaki hücreleri eski haline döndür
+                rows.forEach(row => {
+                    row.children[columnIndex].style.backgroundColor = '';
+                });
             } else {
                 selectedColumns.add(columnName);
-                th.style.backgroundColor = '#d1e7dd'; // yeşilimsi renk
+                th.style.backgroundColor = '#d1e7dd'; // başlık yeşilimsi
+
+                // O sütundaki tüm hücreleri renklendir
+                rows.forEach(row => {
+                    row.children[columnIndex].style.backgroundColor = '#d1e7dd';
+                });
             }
 
             // Hidden input'u güncelle
             document.getElementById('selectedColumns').value = Array.from(selectedColumns).join(',');
         }
     </script>
+
 }

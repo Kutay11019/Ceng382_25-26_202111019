@@ -159,7 +159,7 @@ namespace RazorPagesProject.Pages
 
         // Hiçbiri yoksa
         var pageClasses = ClassList.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
-        string allJson = Utils.Instance.ExportToJson(ClassList);
+        string allJson = Utils.Instance.ExportToJson(pageClasses);
         return File(Encoding.UTF8.GetBytes(allJson), "application/json", "all_data.json");
     }
 }
