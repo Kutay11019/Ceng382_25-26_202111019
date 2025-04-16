@@ -122,52 +122,45 @@ namespace RazorPagesProject.Pages
             return RedirectToPage();
         }
 
-    // Export all data
-    public IActionResult OnPostExportJsonAll()
+    public IActionResult OnPostSmartExportJson()
     {
-        // Tüm veriyi JSON olarak dışa aktarır
-        var json = Utils.Instance.ExportToJson(ClassList);
-        return File(Encoding.UTF8.GetBytes(json), "application/json", "all_data.json");
-    }
-
-    public IActionResult OnPostExportJsonFiltered()
-    {
-        // Filtrelenmiş tüm satırları getir (sayfalama olmadan)
-        var filteredClasses = string.IsNullOrWhiteSpace(FilterText)
-        ? ClassList
-        : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
-
-        // JSON'a dönüştür
-        string json = JsonSerializer.Serialize(filteredClasses);
-
-        // JSON olarak döndür
-        return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_rows.json");
-    }
-
-
-    // Export selected columns
-    public IActionResult OnPostExportJsonColumns()
-    {
-        // Sayfa numarasını formdan alıyoruz
-        int pageNumber = string.IsNullOrEmpty(Request.Form["pageNumber"]) ? 1 : int.Parse(Request.Form["pageNumber"]);
-
-        // Formdan gelen seçili kolonları alıyoruz
+        // Formdan gelen değerleri al
         var selectedColumnsList = string.IsNullOrEmpty(SelectedColumns) ? new List<string>() : SelectedColumns.Split(',').ToList();
 
-        var filteredClasses = string.IsNullOrWhiteSpace(FilterText)
-            ? ClassList
-            : ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+        int pageNumber = string.IsNullOrEmpty(Request.Form["pageNumber"]) ? 1 : int.Parse(Request.Form["pageNumber"]);
 
-        var pageClasses = filteredClasses
-            .Skip((pageNumber - 1) * PageSize)
-            .Take(PageSize)
-            .ToList();
+        if (!string.IsNullOrWhiteSpace(FilterText) && selectedColumnsList.Any())
+        {
+            var filteredClasses = ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        // JSON'a dönüştürme işlemi
-        string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
+            var pageClasses = filteredClasses.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
 
-        // JSON olarak döndürme
-        return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_data.json");
+            string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
+            return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_columns.json");
+        }
+
+        // Sadece filtre varsa
+        if (!string.IsNullOrWhiteSpace(FilterText))
+        {
+            var filteredClasses = ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            string json = JsonSerializer.Serialize(filteredClasses);
+            return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_rows.json");
+        }
+
+        // Sadece kolon seçimi varsa
+        if (selectedColumnsList.Any())
+        {
+            var pageClasses = ClassList.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+
+            string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
+            return File(Encoding.UTF8.GetBytes(json), "application/json", "columns_only.json");
+        }
+
+        // Hiçbiri yoksa
+        var pageClasses = ClassList.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+        string allJson = Utils.Instance.ExportToJson(ClassList);
+        return File(Encoding.UTF8.GetBytes(allJson), "application/json", "all_data.json");
     }
 }
 }
