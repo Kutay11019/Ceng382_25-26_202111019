@@ -151,9 +151,9 @@ namespace RazorPagesProject.Pages
         // Sadece kolon seçimi varsa
         if (selectedColumnsList.Any())
         {
-            var pageClasses = ClassList.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+            var cpageClasses = ClassList.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
 
-            string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
+            string json = Utils.Instance.ExportToJson(cpageClasses, selectedColumnsList);
             return File(Encoding.UTF8.GetBytes(json), "application/json", "columns_only.json");
         }
 
