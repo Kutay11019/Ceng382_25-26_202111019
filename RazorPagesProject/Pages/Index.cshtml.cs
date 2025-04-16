@@ -133,9 +133,9 @@ namespace RazorPagesProject.Pages
         {
             var filteredClasses = ClassList.Where(c => c.ClassName.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            var pageClasses = filteredClasses.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
+            var fpageClasses = filteredClasses.Skip((pageNumber - 1) * PageSize).Take(PageSize).ToList();
 
-            string json = Utils.Instance.ExportToJson(pageClasses, selectedColumnsList);
+            string json = Utils.Instance.ExportToJson(fpageClasses, selectedColumnsList);
             return File(Encoding.UTF8.GetBytes(json), "application/json", "filtered_columns.json");
         }
 
