@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G7qNgvGNI4HHJovHfElYw6JHf+x6frF+qHvyyc9wW8w=",
+  "Hash": "+yO6+L+h/xRtXM3zMQgmQb+WAHSb7eMK4qfMhRiSL/E=",
   "Source": "RazorPagesProject",
   "BasePath": "_content/RazorPagesProject",
   "Mode": "Default",
@@ -78,6 +78,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\wwwroot\\data\\users.json",
+      "SourceId": "RazorPagesProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\wwwroot\\",
+      "BasePath": "_content/RazorPagesProject",
+      "RelativePath": "data/users#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b4v2bg6ibn",
+      "Integrity": "9erHMR7gvgzxG9C8hcW1/hXhYbJKgLBlvzwXnx39Qcg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\data\\users.json"
     },
     {
       "Identity": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\wwwroot\\favicon.ico",
@@ -1462,6 +1483,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-j6fhJSuuyLpOSLuPJU0TsDV0iNjor5S3rDnvxJrt4bg="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.b4v2bg6ibn.json",
+      "AssetFile": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\wwwroot\\data\\users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9erHMR7gvgzxG9C8hcW1/hXhYbJKgLBlvzwXnx39Qcg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 11:32:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b4v2bg6ibn"
+        },
+        {
+          "Name": "label",
+          "Value": "data/users.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9erHMR7gvgzxG9C8hcW1/hXhYbJKgLBlvzwXnx39Qcg="
+        }
+      ]
+    },
+    {
+      "Route": "data/users.json",
+      "AssetFile": "C:\\Users\\Gaming\\Desktop\\Ceng382\\Ceng382_25-26_202111019\\RazorPagesProject\\wwwroot\\data\\users.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9erHMR7gvgzxG9C8hcW1/hXhYbJKgLBlvzwXnx39Qcg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 11:32:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9erHMR7gvgzxG9C8hcW1/hXhYbJKgLBlvzwXnx39Qcg="
         }
       ]
     },
