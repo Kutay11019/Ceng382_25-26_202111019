@@ -21,4 +21,9 @@ app.UseAuthorization();
 app.UseStaticFiles();
 app.MapRazorPages();
 
+builder.Services.AddSession();
+var app = builder.Build();
+app.UseSession(); // app.UseRouting()'den sonra çağırın
+
+
 app.Run();
