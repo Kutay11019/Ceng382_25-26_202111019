@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -21,7 +22,6 @@ app.UseAuthorization();
 app.UseStaticFiles();
 app.MapRazorPages();
 
-builder.Services.AddSession();
 app.UseSession(); // app.UseRouting()'den sonra çağırın
 
 
