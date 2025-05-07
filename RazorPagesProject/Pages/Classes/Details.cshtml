@@ -1,0 +1,14 @@
+@page "{id:int}"
+@model RazorPagesProject.Pages.Classes.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Class Details</h1>
+
+<div>
+    <h4>Class Name:</h4>
+    <p>@Model.Class.ClassName</p>
+</div>
+
+<a asp-page="./Index">Back to List</a>
