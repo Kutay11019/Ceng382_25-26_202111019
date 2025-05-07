@@ -19,7 +19,7 @@ namespace RazorPagesProject.Pages.Classes
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Class = await _context.ClassInformationTable.FindAsync(id);
+            Class = await _context.Classes.FindAsync(id); // DÜZENLENDİ
 
             if (Class == null)
                 return NotFound();
@@ -32,11 +32,11 @@ namespace RazorPagesProject.Pages.Classes
             if (Class == null)
                 return NotFound();
 
-            var classToDelete = await _context.ClassInformationTable.FindAsync(Class.Id);
+            var classToDelete = await _context.Classes.FindAsync(Class.Id); // DÜZENLENDİ
 
             if (classToDelete != null)
             {
-                _context.ClassInformationTable.Remove(classToDelete);
+                _context.Classes.Remove(classToDelete); // DÜZENLENDİ
                 await _context.SaveChangesAsync();
             }
 

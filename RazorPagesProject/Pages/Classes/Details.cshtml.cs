@@ -18,7 +18,7 @@ namespace RazorPagesProject.Pages.Classes
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Class = await _context.ClassInformationTable.FindAsync(id);
+            Class = await _context.Classes.FindAsync(id); // DÜZENLENDİ
 
             if (Class == null)
                 return NotFound();

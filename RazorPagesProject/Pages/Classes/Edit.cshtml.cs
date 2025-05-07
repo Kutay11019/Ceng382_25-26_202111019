@@ -20,7 +20,7 @@ namespace RazorPagesProject.Pages.Classes
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Class = await _context.ClassInformationTable.FindAsync(id);
+            Class = await _context.Classes.FindAsync(id); // DÜZENLENDİ
 
             if (Class == null)
                 return NotFound();
@@ -41,7 +41,7 @@ namespace RazorPagesProject.Pages.Classes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.ClassInformationTable.Any(e => e.Id == Class.Id))
+                if (!_context.Classes.Any(e => e.Id == Class.Id)) // DÜZENLENDİ
                     return NotFound();
                 else
                     throw;

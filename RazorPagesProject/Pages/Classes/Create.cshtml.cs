@@ -24,7 +24,7 @@ namespace RazorPagesProject.Pages.Classes
             if (!ModelState.IsValid)
                 return Page();
 
-            _context.ClassInformationTable.Add(Class);
+            _context.Classes.Add(Class);
             _context.SaveChanges();
             return RedirectToPage("./Index");
         }
