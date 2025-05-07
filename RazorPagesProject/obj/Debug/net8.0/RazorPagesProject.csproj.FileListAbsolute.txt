@@ -63,3 +63,4 @@ C:\Users\Gaming\Desktop\CENG382\Ceng382_25-26_202111019\RazorPagesProject\obj\De
 C:\Users\Gaming\Desktop\CENG382\Ceng382_25-26_202111019\RazorPagesProject\obj\Debug\net8.0\RazorPagesProject.pdb
 C:\Users\Gaming\Desktop\CENG382\Ceng382_25-26_202111019\RazorPagesProject\obj\Debug\net8.0\RazorPagesProject.genruntimeconfig.cache
 C:\Users\Gaming\Desktop\CENG382\Ceng382_25-26_202111019\RazorPagesProject\obj\Debug\net8.0\ref\RazorPagesProject.dll
+C:\Users\Gaming\Desktop\Ceng382\Ceng382_25-26_202111019\RazorPagesProject\obj\Debug\net8.0\RazorPagesProject.csproj.AssemblyReference.cache
