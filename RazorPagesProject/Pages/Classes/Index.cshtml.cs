@@ -1,3 +1,7 @@
+using RazorPagesProject.Data;
+using RazorPagesProject.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 public class IndexModel : PageModel
 {
     private readonly SchoolDbContext _context;
