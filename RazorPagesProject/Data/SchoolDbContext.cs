@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using YourProjectNamespace.Models;
+using RazorPagesProject.Models;
 
-namespace YourProjectNamespace.Data
+namespace RazorPagesProject.Data
 {
     public class SchoolDbContext : DbContext
     {
