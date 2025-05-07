@@ -14,24 +14,24 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Classes[0].ClassName)
+                @Html.DisplayNameFor(model => model.ClassList[0].ClassName)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Classes)
-{
-        <tr>
-            <td>
-                @item.ClassName
-            </td>
-            <td>
-                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
-                <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ClassList)
+        {
+            <tr>
+                <td>
+                    @item.ClassName
+                </td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

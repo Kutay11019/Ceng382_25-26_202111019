@@ -11,5 +11,6 @@ namespace RazorPagesProject.Data
         }
 
         public DbSet<Class> Classes { get; set; }
+        public DbSet<ClassInformationTable> ClassInformationTables { get; set; }
     }
 }
