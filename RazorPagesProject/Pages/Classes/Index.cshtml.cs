@@ -1,20 +1,24 @@
 using RazorPagesProject.Data;
 using RazorPagesProject.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
-public class IndexModel : PageModel
+namespace RazorPagesProject.Pages.Classes
 {
-    private readonly SchoolDbContext _context;
-
-    public IndexModel(SchoolDbContext context)
+    public class IndexModel : PageModel
     {
-        _context = context;
-    }
+        private readonly SchoolDbContext _context;
 
-    public IList<Class> ClassList { get; set; }
+        public IndexModel(SchoolDbContext context)
+        {
+            _context = context;
+        }
 
-    public async Task OnGetAsync()
-    {
-        ClassList = await _context.Classes.ToListAsync();
+        public IList<Class> ClassList { get; set; }
+
+        public async Task OnGetAsync()
+        {
+            ClassList = await _context.Classes.ToListAsync();
+        }
     }
 }
